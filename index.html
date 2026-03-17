@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PREMIE ESTATE | 愛知県賃貸物件検索</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ヘッダー -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-en">PREMIE</span>
+        <span class="logo-sep">|</span>
+        <span class="logo-ja">愛知県賃貸検索</span>
+      </div>
+      <nav class="nav">
+        <a href="#">エリアから探す</a>
+        <a href="#">駅から探す</a>
+        <a href="#">お問い合わせ</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ヒーロー -->
+  <section class="hero">
+    <div class="hero-content">
+      <p class="hero-sub">愛知県の賃貸物件を、スムーズに。</p>
+      <h1 class="hero-title">理想の住まいを<br>見つけよう</h1>
+    </div>
+  </section>
+
+  <!-- 検索カード -->
+  <section class="search-section">
+    <div class="search-card">
+
+      <!-- タブナビ -->
+      <div class="tab-nav">
+        <button class="tab-btn active" data-tab="area">
+          <span class="tab-icon">📍</span>エリアから探す
+        </button>
+        <button class="tab-btn" data-tab="station">
+          <span class="tab-icon">🚃</span>駅から探す
+        </button>
+      </div>
+
+      <!-- ===== タブ1: エリアから探す ===== -->
+      <div class="tab-panel" id="panel-area">
+        <form id="areaForm">
+
+          <!-- 市区町村 -->
+          <div class="form-row form-row-1">
+            <div class="form-group">
+              <label for="areaCode">市区町村</label>
+              <select id="areaCode">
+                <option value="">▼ 市区町村を選択（未選択 = 愛知県全域）</option>
+                <optgroup label="── 名古屋市 ──">
+                  <option value="名古屋市中区">名古屋市中区</option>
+                  <option value="名古屋市千種区">名古屋市千種区</option>
+                  <option value="名古屋市東区">名古屋市東区</option>
+                  <option value="名古屋市西区">名古屋市西区</option>
+                  <option value="名古屋市中村区">名古屋市中村区</option>
+                  <option value="名古屋市昭和区">名古屋市昭和区</option>
+                  <option value="名古屋市天白区">名古屋市天白区</option>
+                  <option value="名古屋市港区">名古屋市港区</option>
+                  <option value="名古屋市緑区">名古屋市緑区</option>
+                  <option value="名古屋市瑞穂区">名古屋市瑞穂区</option>
+                  <option value="名古屋市北区">名古屋市北区</option>
+                  <option value="名古屋市南区">名古屋市南区</option>
+                  <option value="名古屋市守山区">名古屋市守山区</option>
+                  <option value="名古屋市名東区">名古屋市名東区</option>
+                  <option value="名古屋市熱田区">名古屋市熱田区</option>
+                  <option value="名古屋市中川区">名古屋市中川区</option>
+                </optgroup>
+                <optgroup label="── 愛知県その他 ──">
+                  <option value="豊田市">豊田市</option>
+                  <option value="一宮市">一宮市</option>
+                  <option value="岡崎市">岡崎市</option>
+                  <option value="春日井市">春日井市</option>
+                  <option value="豊橋市">豊橋市</option>
+                  <option value="刈谷市">刈谷市</option>
+                  <option value="安城市">安城市</option>
+                  <option value="豊川市">豊川市</option>
+                  <option value="西尾市">西尾市</option>
+                  <option value="大府市">大府市</option>
+                  <option value="東海市">東海市</option>
+                  <option value="知多市">知多市</option>
+                  <option value="半田市">半田市</option>
+                  <option value="小牧市">小牧市</option>
+                  <option value="稲沢市">稲沢市</option>
+                  <option value="日進市">日進市</option>
+                  <option value="長久手市">長久手市</option>
+                  <option value="北名古屋市">北名古屋市</option>
+                  <option value="清須市">清須市</option>
+                  <option value="あま市">あま市</option>
+                  <option value="みよし市">みよし市</option>
+                </optgroup>
+              </select>
+            </div>
+          </div>
+
+          <!-- 共通フィルタ -->
+          <div class="form-row form-row-3">
+            <div class="form-group">
+              <label for="area-rentMax">賃料上限</label>
+              <select id="area-rentMax">
+                <option value="">上限なし</option>
+                <option value="4">〜4万円</option>
+                <option value="5">〜5万円</option>
+                <option value="6">〜6万円</option>
+                <option value="7">〜7万円</option>
+                <option value="8">〜8万円</option>
+                <option value="10">〜10万円</option>
+                <option value="15">〜15万円</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="area-layout">間取り</label>
+              <select id="area-layout">
+                <option value="">指定なし</option>
+                <option value="1K">1K</option>
+                <option value="1DK">1DK</option>
+                <option value="1LDK">1LDK</option>
+                <option value="2LDK">2LDK</option>
+                <option value="3LDK">3LDK</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="area-walk">駅徒歩</label>
+              <select id="area-walk">
+                <option value="">指定なし</option>
+                <option value="5">5分以内</option>
+                <option value="10">10分以内</option>
+                <option value="15">15分以内</option>
+                <option value="20">20分以内</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- こだわり条件 -->
+          <div class="checks-row">
+            <span class="checks-label">こだわり条件</span>
+            <div class="checks-grid">
+              <label class="check-item"><input type="checkbox" id="area-pet"> ペット可</label>
+              <label class="check-item"><input type="checkbox" id="area-parking"> 駐車場あり</label>
+              <label class="check-item"><input type="checkbox" id="area-autolock"> オートロック</label>
+              <label class="check-item"><input type="checkbox" id="area-bath"> バストイレ別</label>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-search">
+            Google で賃貸物件を検索する &nbsp;→
+          </button>
+        </form>
+      </div>
+
+      <!-- ===== タブ2: 駅から探す ===== -->
+      <div class="tab-panel hidden" id="panel-station">
+        <form id="stationForm">
+
+          <!-- 路線・駅 -->
+          <div class="form-row form-row-2">
+            <div class="form-group">
+              <label for="lineSelect">路線</label>
+              <select id="lineSelect">
+                <option value="">▼ 路線を選択</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="stationSelect">駅</label>
+              <select id="stationSelect" disabled>
+                <option value="">まず路線を選んでください</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- 共通フィルタ -->
+          <div class="form-row form-row-3">
+            <div class="form-group">
+              <label for="st-rentMax">賃料上限</label>
+              <select id="st-rentMax">
+                <option value="">上限なし</option>
+                <option value="4">〜4万円</option>
+                <option value="5">〜5万円</option>
+                <option value="6">〜6万円</option>
+                <option value="7">〜7万円</option>
+                <option value="8">〜8万円</option>
+                <option value="10">〜10万円</option>
+                <option value="15">〜15万円</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="st-layout">間取り</label>
+              <select id="st-layout">
+                <option value="">指定なし</option>
+                <option value="1K">1K</option>
+                <option value="1DK">1DK</option>
+                <option value="1LDK">1LDK</option>
+                <option value="2LDK">2LDK</option>
+                <option value="3LDK">3LDK</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="st-walk">駅徒歩</label>
+              <select id="st-walk">
+                <option value="">指定なし</option>
+                <option value="5">5分以内</option>
+                <option value="10">10分以内</option>
+                <option value="15">15分以内</option>
+                <option value="20">20分以内</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- こだわり条件 -->
+          <div class="checks-row">
+            <span class="checks-label">こだわり条件</span>
+            <div class="checks-grid">
+              <label class="check-item"><input type="checkbox" id="st-pet"> ペット可</label>
+              <label class="check-item"><input type="checkbox" id="st-parking"> 駐車場あり</label>
+              <label class="check-item"><input type="checkbox" id="st-autolock"> オートロック</label>
+              <label class="check-item"><input type="checkbox" id="st-bath"> バストイレ別</label>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-search">
+            Google で賃貸物件を検索する &nbsp;→
+          </button>
+        </form>
+      </div>
+
+    </div><!-- /search-card -->
+  </section>
+
+  <!-- 案内メッセージ -->
+  <section class="guide-section">
+    <div class="guide-box">
+      <p class="guide-icon">🔍</p>
+      <p class="guide-title">条件を選んで検索してください</p>
+      <p class="guide-sub">エリア・駅・賃料・間取りなどの条件を設定して、<br>ボタンを押すと Google で賃貸物件の検索結果が表示されます。</p>
+    </div>
+  </section>
+
+  <!-- フッター -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-logo">PREMIE ESTATE</div>
+      <p class="footer-copy">&copy; 2026 PREMIE ESTATE. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
