@@ -127,11 +127,11 @@ lineSelect.addEventListener('change', function () {
 
   if (line) {
     stationSelect.disabled = false;
-    stationSelect.appendChild(new Option('▼ 駅を選択', ''));
+    stationSelect.appendChild(new Option('▼ 请选择车站', ''));
     line.stations.forEach(s => stationSelect.appendChild(new Option(s, s)));
   } else {
     stationSelect.disabled = true;
-    stationSelect.appendChild(new Option('まず路線を選んでください', ''));
+    stationSelect.appendChild(new Option('请先选择路线', ''));
   }
 });
 
@@ -155,20 +155,40 @@ function buildCommonParts(prefix) {
   const rentMax  = document.getElementById(prefix + '-rentMax').value;
   const layout   = document.getElementById(prefix + '-layout').value;
   const walk     = document.getElementById(prefix + '-walk').value;
-  const pet      = document.getElementById(prefix + '-pet').checked;
-  const parking  = document.getElementById(prefix + '-parking').checked;
-  const autolock = document.getElementById(prefix + '-autolock').checked;
-  const bath     = document.getElementById(prefix + '-bath').checked;
+  const pet       = document.getElementById(prefix + '-pet').checked;
+  const parking   = document.getElementById(prefix + '-parking').checked;
+  const autolock  = document.getElementById(prefix + '-autolock').checked;
+  const bath      = document.getElementById(prefix + '-bath').checked;
+  const foreigner = document.getElementById(prefix + '-foreigner').checked;
+  const remote    = document.getElementById(prefix + '-remote').checked;
 
-  if (layout)   parts.push(layout);
-  if (rentMax)  parts.push(rentMax + '万円以下');
-  if (walk)     parts.push('駅徒歩' + walk + '分以内');
-  if (pet)      parts.push('ペット可');
-  if (parking)  parts.push('駐車場あり');
-  if (autolock) parts.push('オートロック');
-  if (bath)     parts.push('バストイレ別');
+  if (layout)    parts.push(layout);
+  if (rentMax)   parts.push(rentMax + '万円以下');
+  if (walk)      parts.push('駅徒歩' + walk + '分以内');
+  if (pet)       parts.push('ペット可');
+  if (parking)   parts.push('駐車場あり');
+  if (autolock)  parts.push('オートロック');
+  if (bath)      parts.push('バストイレ別');
+  if (foreigner) parts.push('外国人可');
+  if (remote)    parts.push('リモート内見');
 
   return parts;
+}
+
+// ===========================
+// サイト名サフィックスの取得
+// ===========================
+const SITE_SUFFIX = {
+  suumo:   'SUUMO',
+  homes:   "HOME'S",
+  athome:  'athome',
+  chintai: 'CHINTAI',
+  google:  '',
+};
+
+function getSiteSuffix(prefix) {
+  const val = document.getElementById(prefix + '-site').value;
+  return SITE_SUFFIX[val] ?? 'SUUMO';
 }
 
 // ===========================
@@ -177,8 +197,10 @@ function buildCommonParts(prefix) {
 document.getElementById('areaForm').addEventListener('submit', function (e) {
   e.preventDefault();
 
-  const area = document.getElementById('areaCode').value || '愛知県';
-  const parts = [area, '賃貸', ...buildCommonParts('area'), 'SUUMO'];
+  const area   = document.getElementById('areaCode').value || '愛知県';
+  const suffix = getSiteSuffix('area');
+  const parts  = [area, '賃貸', ...buildCommonParts('area')];
+  if (suffix) parts.push(suffix);
 
   const query = parts.join(' ');
   window.open('https://www.google.com/search?q=' + encodeURIComponent(query), '_blank', 'noopener,noreferrer');
@@ -196,7 +218,9 @@ document.getElementById('stationForm').addEventListener('submit', function (e) {
     return;
   }
 
-  const parts = [station + '駅', '賃貸', ...buildCommonParts('st')];
+  const suffix = getSiteSuffix('st');
+  const parts  = [station + '駅', '賃貸', ...buildCommonParts('st')];
+  if (suffix) parts.push(suffix);
 
   const query = parts.join(' ');
   window.open('https://www.google.com/search?q=' + encodeURIComponent(query), '_blank', 'noopener,noreferrer');

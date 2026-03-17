@@ -21,7 +21,7 @@
   --shadow-lg:   0 12px 48px rgba(0,0,0,0.16);
   --radius:      4px;
   --radius-lg:   10px;
-  --font-sans:   'Noto Sans JP', sans-serif;
+  --font-sans:   'Noto Sans SC', 'Noto Sans JP', sans-serif;
   --font-serif:  'Cormorant Garamond', serif;
 }
 
